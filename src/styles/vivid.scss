@@ -33,6 +33,7 @@ $text: "Raleway", sans-serif;
 }
 
 .main-wrapper {
+  position: relative;
   padding: 4rem 2rem; //away from top with 1rem gap (same as grid gap)
   width: 100%;
   height: 100%;
@@ -63,16 +64,6 @@ $text: "Raleway", sans-serif;
     width: fit-content;
     padding: 0.3rem 1rem;
   }
-  .img-link {
-    width: 2rem;
-    height: 2rem;
-    background-color: $morning;
-    border-radius: 0.3rem;
-    padding: 0.1rem;
-    //img not in the center err
-    position: absolute;
-    right: 1.5rem;
-  }
   .content-wrapper {
     padding: 1rem;
     width: 100%;
@@ -87,7 +78,41 @@ $text: "Raleway", sans-serif;
 }
 
 
-
+//floatMenu
+.float-menu {
+  z-index: 998;
+  position: fixed;
+  top: 70vh;
+  right: 1rem;
+  transition: height 0.2s ease-out;
+  height: 10rem;
+  width: 4rem;
+  border-radius: 0.3rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgba($morning, 0.9);
+  box-shadow: 0 0 3px 1px $night;
+}
+.menu-icon {
+  transform: rotate(0deg);
+  transition: transform 0.2s ease-out;
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: $morning;
+  border-radius: 0.3rem;
+  margin: 1rem;
+  padding: 0.15rem;
+}
+.icon-list {
+  animation: fade-in 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  i {
+    margin: 0.6rem;
+  }
+}
 
 //pixel art generator
 label {
@@ -98,7 +123,6 @@ label {
   margin: 1rem;
 }
 .opt-wrapper {
-  outline: 2px solid yellow;
   height: 4rem;
   margin: 1rem;
   display: flex;
@@ -118,6 +142,7 @@ label {
     border-radius: 0.3rem;
     overflow-y: scroll;
     max-height: 3.5rem;
+    max-width: 16rem;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -127,7 +152,6 @@ label {
 
 .container {
   margin: 1rem;
-  padding-top: 1rem;
   display: flex;
   justify-content: center;
   overflow: scroll;
@@ -135,8 +159,22 @@ label {
 }
 
 .square {
-  width: 0.5rem;
-  height: 0.5rem;
+  width: 1rem;
+  height: 1rem;
   background-color: white;
-  border: 0.001rem solid lightgray;
+  border: 0.001rem solid rgb(239, 239, 239);
+}
+
+
+//animation
+@keyframes fade-in {
+  0%{
+    opacity: 0;
+  }
+  30% {
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
 }
