@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import { CirclePicker } from 'react-color';
 import { useState } from "react";
 
+//reset circlePicker color
+const palette = ["#E35477","#EDA2BC", "#E0853A", "#ECCF54", "#B1BD43", "#529D46", "#64C3CE", "#1977B2", "#BEAAE4", "#C6B8A1", "#421E11", "#1F1D19"];
+
 function Slider({forWhat, label, rangeId, valueId, gridValue, setGridValue}){
   const handleVlueChange = (e) =>{
     setGridValue(e.target.value)
@@ -69,10 +72,12 @@ export default function Pixel(){
       </div>
       <div className="opt-wrapper">
         <button onClick={handleCreate}>Create Grid</button>
-        <button onClick={handleClear}>Clear Grid</button>
-        <CirclePicker circleSize={18} circleSpacing={10} width="20%"/>
-        <button id="erase-btn">Erase</button>
-        <button id="paint-btn">Paint</button>
+        <button onClick={handleClear}><i className="fa-solid fa-rotate-left"></i></button>
+        <div className="picker-container">
+          <CirclePicker circleSize={18} circleSpacing={10} width="80%" colors={palette}/>
+        </div>
+        <button id="erase-btn"><i className="fa-solid fa-eraser"></i></button>
+        <button id="paint-btn"><i className="fa-solid fa-camera"></i></button>
       </div>
     </div>
     <div className="container" id="block-container">

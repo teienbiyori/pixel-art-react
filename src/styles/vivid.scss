@@ -98,6 +98,8 @@ label {
   margin: 1rem;
 }
 .opt-wrapper {
+  outline: 2px solid yellow;
+  height: 4rem;
   margin: 1rem;
   display: flex;
   justify-content: center; //when number changes it moves, bug
@@ -111,40 +113,21 @@ label {
   span {
     margin-left: 0.3rem;
   }
-}
-
-input[type="color"]{
-  --webkit-appearance: none;
-  --moz-appearance: none;
-  appearance: none;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  width: 3rem;
-  height: 3rem;
-  &::-webkit-color-swatch{
+  //second opt-wrapper
+  .picker-container {
     border-radius: 0.3rem;
+    overflow-y: scroll;
+    max-height: 3.5rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.9);
   }
 }
-// input[type="range" i] {
-//   appearance: none;
-//   background-color: transparent;
-//   &::-webkit-slider-runnable-track {
-//       height: 0.4rem;
-//       width: 10rem;
-//       border-radius: 0.2rem;
-//       background: lightgray;
-//     }
-//   &::-webkit-slider-thumb {
-//     position: relative;
-//     height: 1rem;
-//     width: 1rem;
-//     margin-top: -0.3rem;
-//   }
-// } although couldn't adjust
 
 .container {
-  padding: 1rem;
+  margin: 1rem;
+  padding-top: 1rem;
   display: flex;
   justify-content: center;
   overflow: scroll;
