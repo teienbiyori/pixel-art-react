@@ -82,7 +82,7 @@ $text: "Raleway", sans-serif;
 .float-menu {
   z-index: 998;
   position: fixed;
-  top: 70vh;
+  top: 65vh;
   right: 1rem;
   transition: height 0.2s ease-out;
   height: 10rem;
@@ -95,6 +95,7 @@ $text: "Raleway", sans-serif;
   box-shadow: 0 0 3px 1px $night;
 }
 .menu-icon {
+  cursor: pointer;
   transform: rotate(0deg);
   transition: transform 0.2s ease-out;
   width: 2.5rem;
@@ -143,14 +144,15 @@ label {
     overflow-y: scroll;
     max-height: 3.5rem;
     max-width: 16rem;
+    margin: 0 0.5rem;
     width: 100%;
     display: flex;
     justify-content: center;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(245, 245, 245, 0.9);
   }
 }
 
-.container {
+.block-container {
   margin: 1rem;
   display: flex;
   justify-content: center;

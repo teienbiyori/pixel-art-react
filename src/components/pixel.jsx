@@ -37,12 +37,12 @@ function Slider({forWhat, label, rangeId, valueId, gridValue, setGridValue}){
 }
 
 function DrawingPanel({panelWidth, panelHeight, selectedColor}){
-  let rows = [];
-  for(let i = 0; i < Number(panelHeight); i++){
-    rows.push(<PixelRow key={i} panelWidth={panelWidth} selectedColor={selectedColor}/>)
+  let rows = []; //React allows rendering arrays of elements directly in JSX.
+  for(let i = 0; i < Number(panelWidth); i++){
+    rows.push(<PixelRow key={i} panelHeight={panelHeight} selectedColor={selectedColor}/>)
   } 
   return(<>
-    <div className="container" id="block-container">
+    <div className="block-container">
       {rows}
     </div>
   </>)
@@ -70,8 +70,6 @@ export default function Pixel(){
     //   blockContainer.appendChild(row); //add each row once a time
     // }
   }
-  const handleClear = () =>{
-  };
   
   //picker
   const handleChangeColor = (e) =>{
@@ -99,11 +97,11 @@ export default function Pixel(){
       </div>)}
       <div className="opt-wrapper">
         <button onClick={handleCreate}>{hideRange? (<i className="fa-solid fa-rotate-left"></i>):"Start Drawing"}</button>
+        <button id="erase-btn"><i className="fa-solid fa-eraser"></i></button>
+        <button id="paint-btn"><i className="fa-solid fa-camera"></i></button>
         <div className="picker-container">
           <CirclePicker circleSize={18} circleSpacing={10} width="80%" colors={palette} color={selectedColor} onChangeComplete={handleChangeColor}/>
         </div>
-        <button id="erase-btn"><i className="fa-solid fa-eraser"></i></button>
-        <button id="paint-btn"><i className="fa-solid fa-camera"></i></button>
       </div>
     </div>
     {hideRange && 

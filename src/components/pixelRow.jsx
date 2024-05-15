@@ -2,13 +2,13 @@ import PropTypes from 'prop-types';
 import PixelBlock from './pixelBlock';
 
 PixelRow.propTypes = {
-  panelWidth: PropTypes.string,
+  panelHeight: PropTypes.string,
   selectedColor: PropTypes.string,
 }
 
-export default function PixelRow({ panelWidth , selectedColor }){
+export default function PixelRow({ panelHeight , selectedColor }){
   let cols = [];
-  for(let i = 0; i < Number(panelWidth); i++){
+  for(let i = 0; i < Number(panelHeight); i++){
     cols.push(<PixelBlock key={i} selectedColor={selectedColor}/>)
   }
   console.log(cols)
