@@ -111,7 +111,11 @@ $text: "Raleway", sans-serif;
   align-items: center;
   flex-direction: column;
   i {
+    cursor: pointer;
     margin: 0.6rem;
+    &:active {
+      color: rgba(255, 255, 255, 0.5);
+    }
   }
 }
 
