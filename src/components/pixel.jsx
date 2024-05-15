@@ -2,7 +2,8 @@ import "../function/pixel.js"
 import PropTypes from 'prop-types';
 
 import { CirclePicker } from 'react-color';
-import { useState } from "react";
+import { useState, useRef } from "react";
+import { exportComponentAsPNG } from "react-component-export-image";
 import PixelRow from "./pixelRow.jsx";
 
 //reset circlePicker color
@@ -21,6 +22,9 @@ DrawingPanel.propTypes = {
   panelWidth: PropTypes.string,
   panelHeight: PropTypes.string,
   selectedColor: PropTypes.string,
+  panelRef: PropTypes.shape({
+    current: PropTypes.object
+  })
 };
 
 function Slider({forWhat, label, rangeId, valueId, gridValue, setGridValue}){
@@ -30,15 +34,15 @@ function Slider({forWhat, label, rangeId, valueId, gridValue, setGridValue}){
   return(<>
     <div className="slider">
       <label htmlFor={forWhat}>{label}</label>
-      <input type="range" id={rangeId} min="1" max="70" value={gridValue} onChange={handleVlueChange}/>
+      <input type="range" id={rangeId} min="1" max="50" value={gridValue} onChange={handleVlueChange}/>
       <span id={valueId}>{gridValue}</span>
     </div>
   </>)
 }
 
-function DrawingPanel({panelWidth, panelHeight, selectedColor}){
+function DrawingPanel({panelWidth, panelHeight, selectedColor, panelRef}){
   const [canColorChange, setCanColorChange] = useState(false);
-   
+
   const handleClick = () =>{
     setCanColorChange(!canColorChange);
   }
@@ -48,7 +52,7 @@ function DrawingPanel({panelWidth, panelHeight, selectedColor}){
     rows.push(<PixelRow key={i} panelWidth={panelWidth} selectedColor={selectedColor} canColorChange={canColorChange} onClick={handleClick}/>)
   } 
   return(<>
-    <div className="block-container">
+    <div className="block-container" ref={panelRef}>
       {rows}
     </div>
   </>)
@@ -59,6 +63,7 @@ export default function Pixel(){
   const [width, setWidth] = useState("1");
   const [selectedColor, setSelectedColor] = useState("#E35477");
   const [hideRange, setHideRange] = useState(false);
+  const panelRef = useRef(null); 
 
   //panel
   const handleCreate = () =>{
@@ -82,6 +87,14 @@ export default function Pixel(){
     setSelectedColor(e.hex);
   }
 
+  //camera
+  const handleExportAsPNG = () => {
+    if (panelRef.current) {
+      exportComponentAsPNG(panelRef);
+    }
+  };
+
+
   return(
     <>
     <div className="options">
@@ -104,14 +117,15 @@ export default function Pixel(){
       <div className="opt-wrapper">
         <button onClick={handleCreate}>{hideRange? (<i className="fa-solid fa-rotate-left"></i>):"Start Drawing"}</button>
         <button onClick={()=>{setSelectedColor("#ffff")}}><i className="fa-solid fa-eraser"></i></button>
-        <button id="paint-btn"><i className="fa-solid fa-camera"></i></button>
+        <button onClick={handleExportAsPNG}><i className="fa-solid fa-camera"></i></button>
         <div className="picker-container">
           <CirclePicker circleSize={18} circleSpacing={10} width="80%" colors={palette} color={selectedColor} onChangeComplete={handleChangeColor}/>
         </div>
       </div>
     </div>
     {hideRange && 
-      <DrawingPanel 
+      <DrawingPanel
+      panelRef={panelRef} 
       panelWidth={width}
       panelHeight={height}
       selectedColor={selectedColor}/>}
