@@ -38,8 +38,8 @@ function Slider({forWhat, label, rangeId, valueId, gridValue, setGridValue}){
 
 function DrawingPanel({panelWidth, panelHeight, selectedColor}){
   let rows = []; //React allows rendering arrays of elements directly in JSX.
-  for(let i = 0; i < Number(panelWidth); i++){
-    rows.push(<PixelRow key={i} panelHeight={panelHeight} selectedColor={selectedColor}/>)
+  for(let i = 0; i < Number(panelHeight); i++){
+    rows.push(<PixelRow key={i} panelWidth={panelWidth} selectedColor={selectedColor}/>)
   } 
   return(<>
     <div className="block-container">
