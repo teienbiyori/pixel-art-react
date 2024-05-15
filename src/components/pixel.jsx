@@ -37,9 +37,15 @@ function Slider({forWhat, label, rangeId, valueId, gridValue, setGridValue}){
 }
 
 function DrawingPanel({panelWidth, panelHeight, selectedColor}){
+  const [canColorChange, setCanColorChange] = useState(false);
+   
+  const handleClick = () =>{
+    setCanColorChange(!canColorChange);
+  }
+
   let rows = []; //React allows rendering arrays of elements directly in JSX.
   for(let i = 0; i < Number(panelHeight); i++){
-    rows.push(<PixelRow key={i} panelWidth={panelWidth} selectedColor={selectedColor}/>)
+    rows.push(<PixelRow key={i} panelWidth={panelWidth} selectedColor={selectedColor} canColorChange={canColorChange} onClick={handleClick}/>)
   } 
   return(<>
     <div className="block-container">
@@ -97,7 +103,7 @@ export default function Pixel(){
       </div>)}
       <div className="opt-wrapper">
         <button onClick={handleCreate}>{hideRange? (<i className="fa-solid fa-rotate-left"></i>):"Start Drawing"}</button>
-        <button id="erase-btn"><i className="fa-solid fa-eraser"></i></button>
+        <button onClick={()=>{setSelectedColor("#ffff")}}><i className="fa-solid fa-eraser"></i></button>
         <button id="paint-btn"><i className="fa-solid fa-camera"></i></button>
         <div className="picker-container">
           <CirclePicker circleSize={18} circleSpacing={10} width="80%" colors={palette} color={selectedColor} onChangeComplete={handleChangeColor}/>
