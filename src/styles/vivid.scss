@@ -70,6 +70,21 @@ $text: "Raleway", sans-serif;
   }
 }
 
+.menu-img-container{
+  width: 100%;
+  cursor: pointer;
+}
+.menu-img {
+  width: 80%;
+  margin: 0 auto;
+  max-width: 9rem;
+  max-height: 9rem;
+  &:active {
+      transform: translateY(-0.5rem);
+      outline: 2px solid #E8C872;
+  }
+}
+
 .expanded {
   grid-column: 1 / 4;
   /* Span all columns */

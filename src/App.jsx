@@ -26,24 +26,43 @@ function Block( {children, title} ){
     </div>
   </>)
 }
-
-// Add prop type validation for the Block component
 Block.propTypes = {
   children: PropTypes.node, // Validate children prop as a React node
   title: PropTypes.string,
 };
 
+function MenuImg({onClick, imgId}){
+  return(<>
+    <div className="menu-img-container">
+      <img src="kitten.png" alt="pixel-menu-link" className="menu-img" onClick={onClick} id={imgId}/>
+    </div>
+  </>)
+}
+MenuImg.propTypes = {
+  onClick: PropTypes.func,
+  imgId: PropTypes.string,
+}
+
 function App() {
+  const [unfold, setUnfold] = useState([]);
+  const handleUnfold = (e) =>{
+    if(unfold.includes(e.target.id)){
+      setUnfold([])
+    }else{
+      setUnfold([e.target.id]);
+    }
+  }
   return (
     <>
     <Header />
     <div className="main-wrapper">
       <FloatMenu/>
-      <Block title="Pixel Art Generator"><Pixel/></Block>
-      <Block title="Others">im 2</Block>
-      <Block title="Others">im 3</Block>
-      <Block title="Others">im 4</Block>
-      <Block title="Others">im 5</Block>
+      <Block title="Pixel Art Generator"><MenuImg onClick={handleUnfold} imgId="pixel-art"/></Block>
+      <Block title="Others1"><MenuImg onClick={handleUnfold}/></Block>
+      <Block title="Others2"><MenuImg onClick={handleUnfold}/></Block>
+      <Block title="Others3"><MenuImg onClick={handleUnfold}/></Block>
+      <Block title="Others4"><MenuImg onClick={handleUnfold}/></Block>
+      <Block title="Pixel Art Generator">{unfold.includes("pixel-art")? <Pixel/>: ""}</Block>
     </div>
     </>
   )
