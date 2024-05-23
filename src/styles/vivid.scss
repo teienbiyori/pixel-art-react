@@ -2,7 +2,7 @@ $yolk: #E8C872;
 $cream: #FFF3CF;
 $morning: #C9D7DD;
 $night: #637A9F;
-$title: "Sedan SC", serif;
+$title: "Sedan SC", serif; //do not fit
 $text: "Raleway", sans-serif;
 
 @mixin inner-btn {
@@ -17,6 +17,10 @@ $text: "Raleway", sans-serif;
   &:active {
     transform: translateY(0.2rem);
   }
+  &:hover {
+    background-color: $yolk;
+    color: $cream;
+  }
 }
 
 .body {
@@ -24,24 +28,58 @@ $text: "Raleway", sans-serif;
 }
 
 .header-wrapper {
-  z-index: 999;
-  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 0.5rem 1rem;
   width: 100%;
-  height: 3rem;
-  background-color: $cream;
-  font-family: $title;
+  height: 10rem;
+  background-color: $night;
+  font-family: $text;
+  font-weight: 200;
+  color: #ffff;
+  .logo-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    img {
+      width: 3rem;
+      margin-bottom: 0.5rem;
+    }
+    h1 {
+        font-family: $text;
+        font-weight: 200;
+        color: #ffff;
+        font-size: 2rem;
+      }
+    h3 {
+      font-family: $text;
+      font-weight: 100;
+    }
+  }
+  i {
+    color: #ffff;
+  }
+}
+
+.header-date {
+  display: block;
 }
 
 .main-wrapper {
   position: relative;
-  padding: 4rem 2rem; //away from top with 1rem gap (same as grid gap)
+  padding: 2rem;
   width: 100%;
   height: 100%;
   background-color: $morning;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  grid-gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  .slider-wrapper {
+    display: flex;
+  }
+  .collection-wrapper {
+    margin: 1rem 0;
+  }
 }
 
 .block-wrapper {
@@ -57,11 +95,13 @@ $text: "Raleway", sans-serif;
       width: 0px;
     }
   h3 {
-    font-family: $title;
+    font-family: $text;
     text-align: center;
-    background-color: $cream;
-    color: $yolk;
+    color: white;
+    font-weight: 300;
+    font-size: 2rem;
     width: fit-content;
+    border-radius: 0 0 0.5rem 0.5rem;
     padding: 0.3rem 1rem;
   }
   .content-wrapper {
@@ -140,6 +180,7 @@ label {
 }
 .options {
   font-family: $text;
+  font-weight: 200;
   margin: 1rem;
 }
 .opt-wrapper {
@@ -154,7 +195,8 @@ label {
   button {
     @include inner-btn
   }
-  span {
+  label, span {
+    color: white;
     margin-left: 0.3rem;
   }
   //second opt-wrapper
@@ -188,6 +230,21 @@ label {
   height: 0.7rem;
   border: 0.001rem solid rgb(239, 239, 239);
 }
+
+
+//task-tracker
+.tag-wrapper {
+  margin-bottom: 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  button{
+    @include inner-btn;
+    margin: 0 2%;
+    border-radius: 0.1rem 0.1rem 0.5rem 0.5rem;
+  }
+}
+
 
 
 //animation

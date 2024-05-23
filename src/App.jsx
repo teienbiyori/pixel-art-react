@@ -2,21 +2,13 @@ import '../src/styles/vivid.scss'
 import PropTypes from 'prop-types';
 import Header from './components/header.jsx'
 import Pixel from './components/pixel.jsx';
+import Tracker from './components/tracker.jsx';
 import FloatMenu from './components/floatingMenu.jsx';
 import { useState } from 'react';
 
 
 function Block( {children, title} ){
-  // //not working well, 
-  // const [expand, setExpand] = useState(false);
-  // const handleClick = () =>{
-  //   const allGridItems = document.querySelectorAll(".block-wrapper");
-  //   allGridItems.forEach(item => {
-  //     item.classList.remove('expanded');
-  //     setExpand(false);
-  //   });
-  //   setExpand(!expand);
-  // }
+
   return(<>
     <div className="block-wrapper">
       <h3>{title}</h3>
@@ -57,12 +49,16 @@ function App() {
     <Header />
     <div className="main-wrapper">
       <FloatMenu/>
-      <Block title="Pixel Art Generator"><MenuImg onClick={handleUnfold} imgId="pixel-art"/></Block>
-      <Block title="Others1"><MenuImg onClick={handleUnfold}/></Block>
-      <Block title="Others2"><MenuImg onClick={handleUnfold}/></Block>
-      <Block title="Others3"><MenuImg onClick={handleUnfold}/></Block>
-      <Block title="Others4"><MenuImg onClick={handleUnfold}/></Block>
-      <Block title="Pixel Art Generator">{unfold.includes("pixel-art")? <Pixel/>: ""}</Block>
+      <div className="slider-wrapper">
+        <MenuImg onClick={handleUnfold} imgId="pixel-art"/>
+        <MenuImg onClick={handleUnfold} imgId="task-tracker"/>
+        <MenuImg onClick={handleUnfold} imgId="pixel-art"/>
+      </div>
+      <div className="collection-wrapper">
+        <Block title="Pixel Art Generator">{unfold.includes("pixel-art")? <Pixel/>: ""}</Block>
+        <Block title="Task Tracker">{unfold.includes("task-tracker")? <Tracker/>: ""}</Block>
+        <Block title="Others2"></Block>
+      </div>
     </div>
     </>
   )
