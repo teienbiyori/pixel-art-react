@@ -181,11 +181,10 @@ label {
 .options {
   font-family: $text;
   font-weight: 200;
-  margin: 1rem;
 }
 .opt-wrapper {
   height: 4rem;
-  margin: 1rem;
+  margin-bottom: 1rem;
   display: flex;
   justify-content: center; //when number changes it moves, bug
   align-items: center;
@@ -233,18 +232,76 @@ label {
 
 
 //task-tracker
-.tag-wrapper {
+.list-wrapper {
+  font-family: $text;
+  input[type="text"]{
+    appearance: none;
+    border: 0;
+    padding: 0.3rem 0.5rem;
+    border-radius: 0 0.3rem 0.3rem 0;
+    background-color: rgba($morning, 0.5);
+    color: white;
+    font-family: $text;
+  }
+}
+
+.typing-area {
+  display: flex;
+  justify-content: center;
   margin-bottom: 1rem;
+  position: relative;
+  select {
+    appearance: none;
+    cursor: pointer;
+    border: none;
+    margin-right: 0.5rem;
+    padding: 0.3rem 0.5rem;
+    border-radius: 0.3rem 0 0 0.3rem;
+    font-weight: 600;
+    font-family: $text;
+    background-color: $cream;
+    color: $yolk;
+  }
+}
+
+.tag-wrapper {
+  margin-bottom: 2rem;
   width: 100%;
   display: flex;
   justify-content: center;
   button{
     @include inner-btn;
-    margin: 0 2%;
+    margin: 0 1%;
     border-radius: 0.1rem 0.1rem 0.5rem 0.5rem;
   }
 }
 
+.task-area {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.each-task {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  .category{
+    text-align: center;
+    width: 6rem;
+    padding: 0.3rem 0.5rem;
+    border-radius: 0.3rem 0 0 0.3rem;
+    background-color: $cream;
+    color: $yolk;
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+  .drag-icon {
+    margin-left: 1rem;
+    cursor: grab;
+  }
+}
 
 
 //animation
