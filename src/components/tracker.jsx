@@ -1,5 +1,7 @@
 import { useState } from "react"
 import PropTypes from "prop-types"
+import axios from "axios"
+
 
 
 Task.propTypes = {
@@ -14,9 +16,12 @@ function TypingArea(){
     setCategory(e.target.value);
   }
   const handleAdd = () => {
-    //post title & category
-    console.log(category + " , " + title)
-
+    if(title.length === 0){
+      return alert("type sth!!")
+    }
+    axios.post('http://localhost:3000/add', {title: title, category: category})
+    .then(result => console.log(result))
+    .catch(err => console.log("posting failed: " + err))
   }
   return(<>
     <div className="typing-area">
