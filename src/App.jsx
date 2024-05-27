@@ -2,7 +2,7 @@ import '../src/styles/vivid.scss'
 import PropTypes from 'prop-types';
 import Header from './components/header.jsx'
 import Pixel from './components/pixel.jsx';
-import Tracker from './components/tracker.jsx';
+import Tracker from './components/trackerComponents/tracker.jsx';
 import FloatMenu from './components/floatingMenu.jsx';
 import { useState } from 'react';
 

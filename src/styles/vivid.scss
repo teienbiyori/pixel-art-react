@@ -23,6 +23,44 @@ $text: "Raleway", sans-serif;
   }
 }
 
+@mixin other-tag {
+  background-color: #eacba7;
+  color: #ce8839;
+  &:hover {
+    background-color: #ce8839;
+    color: #eacba7;
+  }
+}
+@mixin refactor-tag {
+  background-color: #abdb91;
+  color: #4ca049;
+
+  &:hover {
+    background-color: #4ca049;
+    color: #abdb91;
+  }
+}
+
+@mixin fix-tag {
+  background-color: #b6c2eb;
+  color: #4f6097;
+
+  &:hover {
+    background-color: #4f6097;
+    color: #b6c2eb;
+  }
+}
+
+@mixin feat-tag {
+  background-color: #deb2e0;
+  color: #925b94;
+
+  &:hover {
+    background-color: #925b94;
+    color: #deb2e0;
+  }
+}
+
 .body {
   position: relative;
 }
@@ -274,6 +312,18 @@ label {
     margin: 0 1%;
     border-radius: 0.1rem 0.1rem 0.5rem 0.5rem;
   }
+  .category-other {
+    @include other-tag;
+  }
+  .category-refactor {
+    @include refactor-tag;
+  }
+  .category-fix {
+    @include fix-tag;
+  }
+  .category-feat {
+    @include feat-tag;
+  }
 }
 
 .task-area {
@@ -296,6 +346,18 @@ label {
     color: $yolk;
     font-size: 0.9rem;
     font-weight: 600;
+  }
+  .category-other {
+    @include other-tag;
+  }
+  .category-refactor {
+    @include refactor-tag;
+  }
+  .category-fix {
+    @include fix-tag;
+  }
+  .category-feat {
+    @include feat-tag;
   }
   .drag-icon {
     margin-left: 1rem;
