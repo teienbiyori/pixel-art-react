@@ -22,7 +22,7 @@ export default function Task({category, title, isDone, id, setUpdateId}){
   }
   const handleDelete = () => {
     axios.delete(`${baseURL}/update/${id}`)
-    .then(result => setUpdateId(result.data._id))
+    .then(result => setUpdateId(result.data._id + "delete"))
     .catch(err => console.log("deleting failed" + err))
   }
   return(<>
