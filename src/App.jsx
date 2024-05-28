@@ -23,16 +23,17 @@ Block.propTypes = {
   title: PropTypes.string,
 };
 
-function MenuImg({onClick, imgId}){
+function MenuImg({onClick, imgId, imgSrc}){
   return(<>
     <div className="menu-img-container">
-      <img src="kitten.png" alt="pixel-menu-link" className="menu-img" onClick={onClick} id={imgId}/>
+      <img src={imgSrc} alt="pixel-menu-link" className="menu-img" onClick={onClick} id={imgId}/>
     </div>
   </>)
 }
 MenuImg.propTypes = {
   onClick: PropTypes.func,
   imgId: PropTypes.string,
+  imgSrc: PropTypes.string,
 }
 
 function App() {
@@ -50,9 +51,9 @@ function App() {
     <div className="main-wrapper">
       <FloatMenu/>
       <div className="slider-wrapper">
-        <MenuImg onClick={handleUnfold} imgId="pixel-art"/>
-        <MenuImg onClick={handleUnfold} imgId="task-tracker"/>
-        <MenuImg onClick={handleUnfold} imgId="pixel-art"/>
+        <MenuImg onClick={handleUnfold} imgId="pixel-art" imgSrc="kitten.png"/>
+        <MenuImg onClick={handleUnfold} imgId="task-tracker" imgSrc="kitten.png"/>
+        <MenuImg onClick={handleUnfold} imgId="pixel-art" imgSrc="kitten.png"/>
       </div>
       <div className="collection-wrapper">
         <Block title="Pixel Art Generator">{unfold.includes("pixel-art")? <Pixel/>: ""}</Block>

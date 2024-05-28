@@ -9,9 +9,10 @@ Task.propTypes = {
   title: PropTypes.string,
   isDone: PropTypes.bool,
   id: PropTypes.string,
+  setUpdateId: PropTypes.func,
 }
 
-export default function Task({category, title, isDone, id}){
+export default function Task({category, title, isDone, id, setUpdateId}){
   const [done, setDone] = useState(isDone);
   const handleDone = () =>{
     axios.put(`${baseURL}/update/${id}`, {isDone:!done})
@@ -21,7 +22,7 @@ export default function Task({category, title, isDone, id}){
   }
   const handleDelete = () => {
     axios.delete(`${baseURL}/update/${id}`)
-    .then(result => console.log(result))
+    .then(result => setUpdateId(result.data._id))
     .catch(err => console.log("deleting failed" + err))
   }
   return(<>
@@ -30,7 +31,6 @@ export default function Task({category, title, isDone, id}){
       <input type="text" value={title} readOnly={true}/>
       <button className="task-complete" onClick={handleDone}><i className={done? "fa-solid fa-square-check":"fa-regular fa-square-check"}></i></button>
       <button className="task-delete" onClick={handleDelete}><i className="fa-solid fa-trash-can"></i></button>
-      <button className="task-edit"><i className="fa-solid fa-pencil"></i></button>
       <span className="drag-icon"><i className="fa-solid fa-ellipsis-vertical"></i></span>
     </div>
   </>)

@@ -23,8 +23,22 @@ export default function Tracker(){
     <Category setSort={setSort}/>
     <div className="task-area">
       {sort.length? 
-      taskData.filter(eachTask => eachTask.category === sort).map((eachTask) =>(<Task key={eachTask._id} id={eachTask._id} title={eachTask.title} category={eachTask.category} isDone={eachTask.isDone}/>)) : 
-      taskData.map((eachTask)=>(<Task key={eachTask._id} id={eachTask._id} title={eachTask.title} category={eachTask.category} isDone={eachTask.isDone}/>))}
+      taskData.filter(eachTask => eachTask.category === sort).map((eachTask) =>(
+      <Task 
+      setUpdateId={setUpdateId}
+      key={eachTask._id} 
+      id={eachTask._id} 
+      title={eachTask.title} 
+      category={eachTask.category} 
+      isDone={eachTask.isDone}/>)) : 
+      taskData.map((eachTask)=>(
+      <Task 
+      setUpdateId={setUpdateId}
+      key={eachTask._id} 
+      id={eachTask._id} 
+      title={eachTask.title} 
+      category={eachTask.category} 
+      isDone={eachTask.isDone}/>))}
     </div>
   </div>
   
