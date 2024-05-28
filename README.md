@@ -30,7 +30,7 @@ _This block was developed as a practice project for the **MERN stack (MongoDB, E
 _In my previous project, the front-end and back-end were separated, so I didn't really understand what was happening on the back-end server. However, through this practice project, I began to see the rationale behind some of the data designs my backend partners implemented, which were initially hard for me to understand. This experience has widened my perspective and deepened my understanding._
 
 ### Backend Server
-The backend server for this project can be found in [colour-database](https://github.com/teienbiyori/colour-database).
+The backend server for this project can be found in [colour-database](https://github.com/teienbiyori/colour-database).<br>
 Don't forget to clone the backend server as well, or else some parts of this project might end up empty😊
 
 ### Dependencies
